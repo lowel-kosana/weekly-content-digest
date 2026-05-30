@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasona Weekly Digest - May 30, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Dashboard CSS */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .summary-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .summary-card.bias { border-left: 4px solid #FF9627; }
+        .summary-card.theme { border-left: 4px solid #95DDFA; }
+        .summary-card.risk { border-left: 4px solid hsl(342, 90%, 67%); }
+        .summary-label { font-size: 10px; text-transform: uppercase; color: #64748b; margin-bottom: 4px; font-weight: 600; }
+        .summary-value { font-size: 16px; font-weight: 700; color: #0f172a; }
+
+        .header {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 40px 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 150, 39, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, hsl(33, 100%, 58%), hsl(342, 90%, 67%), hsl(195, 91%, 78%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .date {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .card-title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 12px;
+        }
+        .card-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+        .card-title {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #FF9627;
+            letter-spacing: -0.3px;
+        }
+        .sentiment-card .card-title {
+            color: #95DDFA; /* secondary cyan */
+        }
+        .inspiration-card .card-title {
+            color: hsl(342, 90%, 67%); /* pink from gradient */
+        }
+        .watchlist-card .card-title {
+            color: #FF9627; /* primary orange */
+        }
+        .watchlist-section {
+            margin-bottom: 24px;
+        }
+        .watchlist-section:last-child {
+            margin-bottom: 0;
+        }
+        .watchlist-section-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+        }
+        .watchlist-badge {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .no-updates {
+            color: #64748b;
+            font-style: italic;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #475569;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 24px;
+        }
+        .footer p {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kasona Weekly Digest</h1>
+            <div class="date">May 30, 2026</div>
+        </div>
+
+        
+    <div class="summary-grid">
+        <div class="summary-card bias">
+            <div class="summary-label">Market Bias</div>
+            <div class="summary-value">Mixed, Shifting to Quality</div>
+        </div>
+        <div class="summary-card theme">
+            <div class="summary-label">Top Theme</div>
+            <div class="summary-value">AI Driving Capital Expenditure</div>
+        </div>
+        <div class="summary-card risk">
+            <div class="summary-label">Risk Signal</div>
+            <div class="summary-value">Rising Rates, AI Cost Explosion</div>
+        </div>
+    </div>
+    
+
+        <!-- SECTION 1: MARKET SENTIMENT -->
+        <div class="card sentiment-card">
+            <div class="card-title-container">
+                <span class="card-icon">📈</span>
+                <h2 class="card-title">Overall Market Sentiment</h2>
+            </div>
+            <ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">The market is experiencing wavering sentiment following Trump&#x27;s return from China without a deal, with S&amp;P 500 down 1.2% and Dow down 537 points. <a href="sources/19e69a211e325641.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">30-year bond yields have reached their highest level since 2007, and oil prices have increased by 10% in a week. <a href="sources/19e69a211e325641.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">The market is transitioning from a falling interest rate environment to one of stable or slightly rising rates, which will favor quality stocks over &#x27;junk stocks&#x27;. <a href="sources/19e69a211e325641.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Investors are advised to build a 3-5% cash buffer to prepare for market shifts. <a href="sources/19e69a211e325641.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Oaktree Capital maintains a contrarian credit investment approach, advocating aggression when others are fearful and caution when markets are optimistic. <a href="https://www.youtube.com/watch?v=vcPyd9GsV-s" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Oaktree Capital ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Oaktree&#x27;s strategy notes increased risk from leverage plus volatility, and warns about AI disruption potentially making software companies obsolete for direct lending. <a href="https://www.youtube.com/watch?v=vcPyd9GsV-s" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Oaktree Capital ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Better buying opportunities are expected in coming months as fear replaces FOMO. <a href="https://www.youtube.com/watch?v=vcPyd9GsV-s" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Oaktree Capital ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">AI Data Centers are driving significant CapEx, projected at $750 billion this year and over $1 trillion next year, representing a substantial portion of US GDP. <a href="sources/19e6ae332f612492.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Not Boring ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Uber&#x27;s CEO warns of exploding AI costs, with one firm reportedly burning hundreds of millions monthly on AI. <span style="font-size: 12px; color: #64748b; font-weight: 600;">[Doppelgänger]</span></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">SaaS businesses show a median Enterprise Value to Next Twelve Months (NTM) Revenue multiple of 3.2x, with high-growth companies (&gt;22% NTM growth) at 15.9x. <a href="sources/19e73df78e15f70a.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Clouded Judgement by Jamin Ball ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">GPU chips used by Neoclouds are expected to have a longer useful life than initial contracts (4-5 years), potentially driving significant profitability from recontracting for inference post-debt payoff. <a href="sources/19e73df78e15f70a.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Clouded Judgement by Jamin Ball ↗]</a></li>
+</ul>
+        </div>
+
+        <!-- SECTION 2: WATCHLISTS -->
+        <div class="card watchlist-card">
+            <div class="card-title-container">
+                <span class="card-icon">🎯</span>
+                <h2 class="card-title">Watchlist Summaries</h2>
+            </div>
+            
+            <div class="watchlist-section">
+                <h3 class="watchlist-section-header">
+                    Serial Acquirers
+                    <span class="watchlist-badge">watchlist/serial-acquirers</span>
+                </h3>
+                <p class='no-updates'>No updates this week.</p>
+            </div>
+            
+            <div style="height: 1px; background-color: #e2e8f0; margin: 24px 0;"></div>
+            
+            <div class="watchlist-section">
+                <h3 class="watchlist-section-header">
+                    Peptides
+                    <span class="watchlist-badge">watchlist/peptides</span>
+                </h3>
+                <p class='no-updates'>No updates this week.</p>
+            </div>
+            
+            <div style="height: 1px; background-color: #e2e8f0; margin: 24px 0;"></div>
+            
+            <div class="watchlist-section">
+                <h3 class="watchlist-section-header">
+                    Generic
+                    <span class="watchlist-badge">watchlist/generic</span>
+                </h3>
+                <ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Michael Jakob purchased €2 million in Microsoft shares, 3x leveraged, doubling his money in one month. <a href="sources/19e6dce9e31be0e3.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Microsoft is recommended with a projected 2030 P/E of 12, a 10/10 quality score, and 18% revenue growth. <a href="sources/19e6dce9e31be0e3.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">United Health is noted as recovering after an SEC fine, with P/E falling below 10 and potential to double in 2-3 years. <a href="sources/19e6dce9e31be0e3.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Hermès is highlighted as a rare buying opportunity, having shown 20% revenue growth even during the 2008 financial crisis and doubling revenue in 3 years. <a href="sources/19e6dce9e31be0e3.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Michael Jakob ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Clay, a go-to-market engineering company, achieved over $100M revenue in 3 years and was valued at $5B in January 2026, primarily by narrowing its focus to outbound sales and leveraging third-party data. <a href="sources/19e6d70f59c4f0a4.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Startup Riders ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Eli Lilly&#x27;s VERVE-102 gene therapy showed significant (51-88%) reduction in PCSK9 levels and LDL cholesterol in a Phase 1 study, potentially offering a one-time treatment for heart disease. <a href="sources/19e73be90c8fcdf7.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Not Boring ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">GLP-1 drugs like Ozempic and Mounjaro are showing promise in stalling cancer progression, reducing tumor rates in lung and breast cancer by approximately half. <a href="sources/19e73be90c8fcdf7.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Not Boring ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Hermeus Quarterhorse Mk 2.1 successfully completed its first supersonic flight (Mach 1.21), and its Defense Innovation Unit contract was expanded to $219M for high-Mach flight and payload release. <a href="sources/19e73be90c8fcdf7.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Not Boring ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Breakthroughs in atomically precise mechanosynthesis of carbon structures (nanotechnology) were experimentally demonstrated, moving the field towards programmable atomic fabrication. <a href="sources/19e73be90c8fcdf7.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Not Boring ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">NASA launched the Moon Base program under Artemis, with initial missions slated for late 2026 to establish sustained human presence at the lunar South Pole. <a href="sources/19e73be90c8fcdf7.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Not Boring ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Anthropic is reportedly seeking AI chip capacity from Microsoft and secured a $36B debt deal from Apollo for Google-TPUs, while Claude Opus 4.8 launched. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Anthropic reported a Net Revenue Retention (NRR) rate exceeding 500%, indicating strong customer value and stickiness. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Meta is exploring subscription models for its AI chatbot and engaging enterprise clients with &#x27;Forward Deployed Teams&#x27;. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">DuckDuckGo saw a 30% increase in installs following Google&#x27;s introduction of AI in search results, suggesting user backlash. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Starlink will be integrated into half of American Airlines&#x27; fleet, and rumors of a SpaceX-Tesla merger are escalating prior to SpaceX&#x27;s IPO. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Robinhood now offers AI-powered trading agents to its customers. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Snowflake reported strong earnings, exceeding estimates in revenue and product revenue, with AI products significantly contributing to growth and M&amp;A expanding market positioning. <a href="sources/19e69ab8ca03f8af.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Stock Market Nerd ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">MongoDB also surpassed revenue estimates, reporting strong early interest in its AI products and significant backlog outperformance. <a href="sources/19e69ab8ca03f8af.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Stock Market Nerd ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Stripe is identified as an indirect beneficiary of the AI boom, processing a substantial volume of AI-generated digital payments. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">allO, a European restaurant OS platform, raised a $14M Series A round, showcasing 3.5x YoY revenue growth and a strategy to integrate AI agents for operations like reservation and ordering. <a href="sources/19e6857a5a1e0df1.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Alexandre ↗]</a></li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">GROQ raised $650 million. <a href="https://app.notion.com/p/julian-shares/9b991c68036742a9a7d80c853d367595?v=ba0fcd3b99fb4285869e4dad95a878e0&amp;p=370c65cd-51e5-810e-a016-dc4e39a13378" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; font-weight: 600;">[Doppelgänger ↗]</a></li>
+</ul>
+            </div>
+        </div>
+
+        <!-- SECTION 3: YOUTUBE STRATEGY INSIGHTS -->
+        <div class="card inspiration-card">
+            <div class="card-title-container">
+                <span class="card-icon">📺</span>
+                <h2 class="card-title">YouTube Strategy Insights</h2>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px 0;">
+<p style="font-size: 16px; font-weight: 600; color: #0f172a; margin: 0;">Joseph Carlson After Hours:</p>
+<a href="https://www.youtube.com/watch?v=yzplj-RvvBw" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #f1f5f9;">Read Source ↗</a>
+</div>
+<ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Concentrate portfolio in hyperscalers (Google, Microsoft, Amazon, Meta) to monetize AI over long periods.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Own some exposure to durable phase 1 AI infrastructure sellers, like ASML, with long-term revenue streams, while avoiding highly cyclical memory companies (Micron, SanDisk).</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Focus on companies with distribution, proprietary data, customer relationships, and systems of record.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Prioritize moat quality and impenetrable business models over valuation when making investment decisions.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Sell when facing long-term structural headwinds, perceived moat erosion, or when competitive threats emerge to core business advantages.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Avoid momentum-based timing and market trends, instead looking for discounted entry points on quality companies.</li>
+</ul>
+<div style="height: 1px; background-color: #e2e8f0; margin: 24px 0;"></div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px 0;">
+<p style="font-size: 16px; font-weight: 600; color: #0f172a; margin: 0;">Moritz Hessel | Total Return Finanzen:</p>
+<a href="https://www.youtube.com/watch?v=AukxojFLPbM" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #f1f5f9;">Read Source ↗</a>
+</div>
+<ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Invest mostly in large-cap software and semiconductor companies, specifically Microsoft (MSFT.US), Nvidia (NVDA.US), and TSMC (TSM.US).</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Hold broad market ETFs such as FTSE All-World (SWDA.LSE).</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Employ a buy-and-hold philosophy for high-quality businesses that are growing rapidly.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Buy when the Price-to-Earnings (P/E) ratio is under 30.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Ignore short-term market volatility.</li>
+</ul>
+<div style="height: 1px; background-color: #e2e8f0; margin: 24px 0;"></div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px 0;">
+<p style="font-size: 16px; font-weight: 600; color: #0f172a; margin: 0;">Bravos Research:</p>
+<a href="sources/19e743450b190086.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #f1f5f9;">Read Source ↗</a>
+</div>
+<ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Go 2x leveraged long on NASDAQ 100 using quantitative model signals when market conditions are aggressive.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Position in sectors benefiting from AI infrastructure build-out, including nuclear power, energy infrastructure, and base metals mining (e.g., copper, lithium).</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Stay leveraged long when real GDP growth is around 2.7% and job creation remains positive.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Move to cash when job creation turns negative (below zero) or when quantitative models signal a defensive posture due to rising economic risks.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Reduce exposure when assets meet bubble criteria (100% rise in 2 years, 100% outperformance vs. market).</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Anticipate that even if the Fed raises rates in H2 2026, the market could continue rising for 12+ months afterward, with a stock market euphoria window potentially lasting until mid-2027.</li>
+</ul>
+<div style="height: 1px; background-color: #e2e8f0; margin: 24px 0;"></div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px 0;">
+<p style="font-size: 16px; font-weight: 600; color: #0f172a; margin: 0;">FINANZFOKUS:</p>
+<a href="https://www.youtube.com/watch?v=uXGZI9Ff3TQ" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #f1f5f9;">Read Source ↗</a>
+</div>
+<ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Employ a Core-Satellite strategy with a world ETF combination as the core and selective individual stocks as satellites.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Focus on increasing your savings rate rather than constantly optimizing ETF selection.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Continue monthly investing through broad ETF savings plans regardless of market highs, as investing at all-time highs historically produces better results than random timing.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Keep cash reserves ready to buy during market corrections.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Target companies benefiting from AI infrastructure investments and data center expansion.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Look for technology stocks with PEG ratios under 1.0 as a potential undervaluation signal, and PEG ratios around 1.1 as fair valuation for infrastructure companies.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Never sell during market crashes, as missing the 10 best trading days can cost 40% of annual returns.</li>
+</ul>
+
+        </div>
+
+        <!-- SECTION 4: AI PRODUCT INSPIRATION -->
+        <div class="card inspiration-card">
+            <div class="card-title-container">
+                <span class="card-icon">💡</span>
+                <h2 class="card-title">AI Product Inspiration</h2>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px 0;">
+<p style="font-size: 16px; font-weight: 600; color: #0f172a; margin: 0;">Dave Wang:</p>
+<a href="sources/19e645b3bbbbf106.html" target="_blank" style="font-size: 12px; color: #FF9627; text-decoration: none; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #f1f5f9;">Read Source ↗</a>
+</div>
+<ul style="margin: 4px 0 12px 0; padding-left: 24px; color: #475569;">
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Utilize AI to read Chinese, Korean, and Japanese corporate filings to predict downstream US earnings, particularly for companies sourcing from Asia.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Implement a multi-agent workflow for supply chain analysis, including 5 parallel discovery channels for Asian supplier candidates and 10 parallel sub-agents for deep dives into pre-print earnings commentary in original languages.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Incorporate automated translation, synthesis, and read-through capabilities within the AI tool to extract actionable signals from foreign language corporate disclosures, even without human language proficiency.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Enable scalable backtesting to identify high-signal upstream suppliers by re-running analysis across multiple quarters (e.g., 4-8 quarters).</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Integrate &#x27;MCP wiring&#x27; for pulling market data and filings efficiently to support comprehensive AI analysis.</li>
+<li style="margin-bottom: 6px; line-height: 1.6; font-size: 14px;">Design workflows that allow users to input a research hypothesis, with AI filling in the detailed execution, reducing analysis time from weeks to an afternoon.</li>
+</ul>
+
+        </div>
+
+        <div class="footer">
+            <p>Sent with ❤️ from Kasona Intelligence Agent</p>
+            <p>&copy; 2026 Kasona. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
